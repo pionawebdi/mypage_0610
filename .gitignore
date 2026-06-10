@@ -1,0 +1,39 @@
+# ─── OS ─────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ─── Editor / IDE ────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ─── Claude Code ─────────────────────────────────────────
+.claude/
+
+# ─── Logs ────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Temp / Cache ────────────────────────────────────────
+*.tmp
+*.cache
+.cache/
+tmp/
+
+# ─── Node (향후 사용 시) ──────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+dist/
+build/
+.env
+.env.local
+.env.*.local
