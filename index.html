@@ -862,6 +862,180 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ─── THEME TRANSITION ─────────────────────────────── */
+    body, .nav, .section, footer, .quote-wrap,
+    .skill-card, .life-card, .dream-card, .isfj-card {
+      transition: background .4s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease;
+    }
+
+    /* ─── THEME TOGGLE BUTTON ───────────────────────────── */
+    .theme-toggle {
+      position: relative;
+      width: 52px; height: 28px;
+      border-radius: 50px;
+      border: 1px solid rgba(0,245,255,.35);
+      background: rgba(0,245,255,.08);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background .35s, border-color .35s;
+      outline: none;
+    }
+    .theme-toggle:focus-visible {
+      box-shadow: 0 0 0 3px rgba(0,245,255,.35);
+    }
+    .theme-toggle::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      top: 3px; left: 3px;
+      background: var(--teal);
+      box-shadow: 0 0 10px rgba(0,245,255,.6);
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .35s, box-shadow .35s;
+    }
+    html[data-theme="light"] .theme-toggle {
+      background: rgba(0,140,163,.12);
+      border-color: rgba(0,140,163,.4);
+    }
+    html[data-theme="light"] .theme-toggle::after {
+      transform: translateX(24px);
+      background: #F59E0B;
+      box-shadow: 0 0 10px rgba(245,158,11,.6);
+    }
+    .toggle-icon {
+      position: absolute;
+      top: 50%; font-size: .75rem;
+      pointer-events: none;
+      user-select: none;
+      transform: translateY(-50%);
+    }
+    .toggle-icon.moon { left: 5px; opacity: 1; transition: opacity .3s; }
+    .toggle-icon.sun  { right: 5px; opacity: .4; transition: opacity .3s; }
+    html[data-theme="light"] .toggle-icon.moon { opacity: .4; }
+    html[data-theme="light"] .toggle-icon.sun  { opacity: 1; }
+
+    /* ─── LIGHT MODE VARIABLES ─────────────────────────── */
+    html[data-theme="light"] {
+      --dark-1: #F5F7FF;
+      --dark-2: #ECF0FF;
+      --dark-3: #E4E8FF;
+      --teal:   #008CA3;
+      --sky:    #C8005E;
+      --coral:  #8200B3;
+      --gold:   #6E7D00;
+      --white:  #0C0F33;
+      --muted:  #687599;
+      --card-bg:     rgba(0,140,163,.05);
+      --card-border: rgba(0,140,163,.16);
+      --neon-glow: 0 0 20px rgba(0,140,163,.12), 0 0 60px rgba(0,140,163,.05);
+    }
+
+    /* light-mode specific overrides */
+    html[data-theme="light"] .nav.scrolled {
+      background: rgba(245,247,255,.95);
+      border-bottom-color: rgba(0,140,163,.2);
+      box-shadow: 0 2px 24px rgba(0,0,0,.08);
+    }
+    html[data-theme="light"] .hero-overlay {
+      background:
+        radial-gradient(ellipse 90% 70% at 15% 30%, rgba(0,140,163,.09) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 60% at 85% 65%, rgba(200,0,94,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(130,0,179,.05) 0%, transparent 60%),
+        linear-gradient(180deg, #E8ECFF 0%, #DDE3FF 100%);
+    }
+    html[data-theme="light"] .hero-aurora {
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 20%, rgba(0,140,163,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 70% 80%, rgba(200,0,94,.05) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 80% 20%, rgba(130,0,179,.04) 0%, transparent 60%);
+    }
+    html[data-theme="light"] .blob-1 { background: radial-gradient(circle, rgba(0,140,163,.13), transparent 70%); }
+    html[data-theme="light"] .blob-2 { background: radial-gradient(circle, rgba(200,0,94,.10),  transparent 70%); }
+    html[data-theme="light"] .blob-3 { background: radial-gradient(circle, rgba(130,0,179,.08), transparent 70%); }
+    html[data-theme="light"] .hero-grid-lines {
+      background-image:
+        linear-gradient(rgba(0,140,163,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,140,163,.05) 1px, transparent 1px);
+    }
+    html[data-theme="light"] #hero::after {
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(0,140,163,.007) 3px, rgba(0,140,163,.007) 4px
+      );
+    }
+    html[data-theme="light"] .s-chip {
+      background: rgba(245,247,255,.92);
+      border-color: rgba(0,0,0,.1);
+      color: var(--white);
+    }
+    html[data-theme="light"] .hero-badge {
+      background: rgba(0,140,163,.07);
+      border-color: rgba(0,140,163,.4);
+      box-shadow: 0 0 24px rgba(0,140,163,.15), inset 0 0 16px rgba(0,140,163,.05);
+    }
+    html[data-theme="light"] .hero-name {
+      background: linear-gradient(135deg, #0C0F33 0%, var(--teal) 45%, var(--sky) 100%);
+      -webkit-background-clip: text; background-clip: text;
+    }
+    html[data-theme="light"] .hero-sub   { color: rgba(12,15,51,.45); }
+    html[data-theme="light"] .typed-label { color: var(--muted); }
+    html[data-theme="light"] .scroll-cue span { color: var(--muted); }
+    html[data-theme="light"] .s-label {
+      text-shadow: 0 0 18px rgba(0,140,163,.4);
+    }
+    html[data-theme="light"] .s-label::before {
+      box-shadow: 0 0 10px rgba(0,140,163,.5);
+    }
+    html[data-theme="light"] .s-sub    { color: rgba(12,15,51,.55); }
+    html[data-theme="light"] .sk-desc,
+    html[data-theme="light"] .lc-text,
+    html[data-theme="light"] .dream-text { color: rgba(12,15,51,.55); }
+    html[data-theme="light"] .sk-tag {
+      background: rgba(0,0,0,.05);
+      color: rgba(12,15,51,.65);
+    }
+    html[data-theme="light"] .skill-card:hover {
+      border-color: rgba(0,140,163,.3);
+      box-shadow: 0 24px 64px rgba(0,0,0,.1), 0 0 30px rgba(0,140,163,.08);
+    }
+    html[data-theme="light"] .isfj-card {
+      background: rgba(0,140,163,.04);
+      border-color: rgba(0,140,163,.18);
+    }
+    html[data-theme="light"] .isfj-badge {
+      background: linear-gradient(135deg, rgba(0,140,163,.1), rgba(130,0,179,.05));
+      border-color: rgba(0,140,163,.3);
+      text-shadow: 0 0 15px rgba(0,140,163,.4);
+    }
+    html[data-theme="light"] .isfj-info-sub { color: var(--muted); }
+    html[data-theme="light"] .isfj-trait {
+      background: rgba(110,125,0,.06);
+      border-color: rgba(110,125,0,.25);
+      text-shadow: 0 0 10px rgba(110,125,0,.3);
+    }
+    html[data-theme="light"] .orbit-ring   { border-color: rgba(0,140,163,.22); }
+    html[data-theme="light"] .orbit-ring-2 { border-color: rgba(200,0,94,.16); }
+    html[data-theme="light"] .life-card:hover {
+      box-shadow: 0 24px 70px rgba(0,0,0,.1), 0 0 20px rgba(0,140,163,.07);
+    }
+    html[data-theme="light"] .life-card.swim {
+      background: linear-gradient(135deg, rgba(0,140,163,.05), rgba(130,0,179,.02));
+      border-color: rgba(0,140,163,.18);
+    }
+    html[data-theme="light"] .swim-wave path:first-child { fill: rgba(0,140,163,.07); }
+    html[data-theme="light"] .swim-wave path:last-child  { fill: rgba(0,140,163,.04); }
+    html[data-theme="light"] .dream-card:hover {
+      box-shadow: 0 34px 90px rgba(0,0,0,.12), 0 0 40px var(--glow-color);
+    }
+    html[data-theme="light"] .dream-progress { background: rgba(0,0,0,.07); }
+    html[data-theme="light"] .quote-wrap {
+      background: linear-gradient(135deg, rgba(0,140,163,.05), rgba(200,0,94,.04));
+      border-color: rgba(0,140,163,.14);
+    }
+    html[data-theme="light"] .quote-text { color: rgba(12,15,51,.8); }
+    html[data-theme="light"] .ft-link:hover { color: var(--teal); }
+    html[data-theme="light"] .ft-copy { color: rgba(12,15,51,.35); }
+
     /* ─── RESPONSIVE ────────────────────────────────────── */
     @media (max-width: 900px) {
       .nav  { padding: 16px 28px; }
@@ -903,6 +1077,10 @@
       <li><a href="#life">Life</a></li>
       <li><a href="#dreams">Dreams</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <span class="toggle-icon moon">🌙</span>
+      <span class="toggle-icon sun">☀️</span>
+    </button>
   </nav>
 
   <!-- ═══ HERO ═════════════════════════════════════════════ -->
@@ -1211,23 +1389,40 @@
     window.addEventListener('resize', bgResize, { passive: true });
 
     let bgT = 0;
+    let isLightMode = false;
+
     function drawBg() {
       bgT += .007;
       ctx.clearRect(0, 0, BW, BH);
 
-      const grad = ctx.createLinearGradient(0, 0, BW, BH);
-      grad.addColorStop(0,  '#04071A');
-      grad.addColorStop(.5, '#080D28');
-      grad.addColorStop(1,  '#04071A');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, BW, BH);
-
-      for (const s of STARS) {
-        const tw = .65 + .35 * Math.sin(bgT * 1.6 + s.tw);
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${s.c},${s.a * tw})`;
-        ctx.fill();
+      if (isLightMode) {
+        const grad = ctx.createLinearGradient(0, 0, BW, BH);
+        grad.addColorStop(0,  '#E8ECFF');
+        grad.addColorStop(.5, '#DDE3FF');
+        grad.addColorStop(1,  '#E8ECFF');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, BW, BH);
+        for (const s of STARS) {
+          const tw = .65 + .35 * Math.sin(bgT * 1.6 + s.tw);
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r * 1.2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0,100,140,${s.a * tw * 0.55})`;
+          ctx.fill();
+        }
+      } else {
+        const grad = ctx.createLinearGradient(0, 0, BW, BH);
+        grad.addColorStop(0,  '#04071A');
+        grad.addColorStop(.5, '#080D28');
+        grad.addColorStop(1,  '#04071A');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, BW, BH);
+        for (const s of STARS) {
+          const tw = .65 + .35 * Math.sin(bgT * 1.6 + s.tw);
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${s.c},${s.a * tw})`;
+          ctx.fill();
+        }
       }
       requestAnimationFrame(drawBg);
     }
@@ -1376,6 +1571,22 @@
         a.classList.add('active');
       });
     });
+
+    /* ── THEME TOGGLE ────────────────────────────────────── */
+    const themeToggle = document.getElementById('themeToggle');
+    const wavePath    = document.querySelector('.wave-div path');
+
+    function applyTheme(light) {
+      isLightMode = light;
+      document.documentElement.dataset.theme = light ? 'light' : 'dark';
+      localStorage.setItem('piona-theme', light ? 'light' : 'dark');
+      if (wavePath) wavePath.setAttribute('fill', light ? '#ECF0FF' : '#05030E');
+    }
+
+    themeToggle.addEventListener('click', () => applyTheme(!isLightMode));
+
+    // restore saved preference (default: dark)
+    applyTheme(localStorage.getItem('piona-theme') === 'light');
   </script>
 </body>
 </html>
